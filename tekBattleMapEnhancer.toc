@@ -1,0 +1,19 @@
+## Interface: 30000
+
+## Title: tekBattleMapEnhancer
+## Notes: Makes the battle map better!
+## Author: Tekkub Stoutwrithe
+## Version: Alpha
+## X-Website: http://www.tekkub.net/
+## X-Email: tekkub-wow@googlegroups.com
+## X-Category: Misc
+
+## OptionalDeps: tekDebug, tekErr
+
+## LoadOnDemand: true
+## LoadWith: Blizzard_BattlefieldMinimap
+
+LibStub.lua
+tekKonfigAboutPanel.lua
+
+tekBattleMapEnhancer.lua

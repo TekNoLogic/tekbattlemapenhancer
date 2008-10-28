@@ -51,12 +51,12 @@ local f = CreateFrame("Frame", nil, WorldMapFrame)
 f:SetScript("OnShow", function()
 	if BattlefieldMinimap:IsVisible() then
 		visible = true
-		BattlefieldMinimap:Hide()
+		BattlefieldMinimap_Toggle()
 	end
 end)
 f:SetScript("OnHide", function()
 	if visible then
-		BattlefieldMinimap:Show()
+		BattlefieldMinimap_Toggle()
 		visible = false
 	end
 end)

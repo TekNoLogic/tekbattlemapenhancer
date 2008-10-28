@@ -1,27 +1,31 @@
 
-
 local f = CreateFrame("frame")
 f:RegisterEvent("ADDON_LOADED")
 f:SetScript("OnEvent", function(self, event, addon)
 	if not BattlefieldMinimap_Update then return end
 
 	local function noop() end
+	local function setalpha()
+		if GetNumMapOverlays() == 0 then for i=1,12 do _G["BattlefieldMinimap"..i]:RealSetAlpha(1) end
+		else for i=1,12 do _G["BattlefieldMinimap"..i]:RealSetAlpha(.4) end end
+	end
+	for i=1,12 do
+		local f = _G["BattlefieldMinimap"..i]
+		f.SetAlpha, f.RealSetAlpha = noop, f.SetAlpha
+	end
+
 	hooksecurefunc("BattlefieldMinimap_Update", function()
 		for i=1,NUM_BATTLEFIELDMAP_OVERLAYS do
 			_G["BattlefieldMinimapOverlay"..i]:SetAlpha(1)
 			_G["BattlefieldMinimapOverlay"..i].SetAlpha = noop
 		end
 
-		if GetNumMapOverlays() == 0 then for i=1,12 do _G["BattlefieldMinimap"..i]:Show() end
-		else for i=1,12 do _G["BattlefieldMinimap"..i]:Hide() end end
+		setalpha()
 	end)
 
 	self:SetParent(BattlefieldMinimap)
 	self:SetScript("OnShow", function()
-		for i=1,12 do
-			_G["BattlefieldMinimap"..i]:SetAlpha(1)
-			_G["BattlefieldMinimap"..i]:Hide()
-		end
+		setalpha()
 		BattlefieldMinimapCorner:Hide()
 		BattlefieldMinimapBackground:Hide()
 		BattlefieldMinimapCloseButton:Hide()

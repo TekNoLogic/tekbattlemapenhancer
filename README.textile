@@ -1,0 +1,13 @@
+tekBattleMapEnhancer is my feeble attempt to make the battle map actually useful in the outside world (as many of you know, I don't PvP).
+
+Here's what tBME does:
+
+* Scale up the battle map OnEnter, so that it's actually readable
+* Make the background alpha lower and the "puzzle piece" alpha higher, to highligh the areas you've discovered
+* Hide the map when the world map is open, so that you can actually view other zones (nice bug Blizzy!)
+
+h2. Links
+
+<b>Visit "my site":http://www.tekkub.net/addons/tekBattleMapEnhancer for more info.<br>
+Please report all bugs and feature requests to my "Google Code":http://code.google.com/p/tekkub-wow/issues/list?can=1&q=addon:tekBattleMapEnhancer&sort=status+milestone&colspec=ID%20Type%20Status%20Addon%20Milestone%20Summary tracker<br>
+Please direct all feedback and questions to my "Google Groups":http://groups-beta.google.com/group/tekkub-wow mailinglist.</b>

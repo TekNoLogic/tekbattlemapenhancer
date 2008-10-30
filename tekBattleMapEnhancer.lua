@@ -53,10 +53,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 	self:SetAllPoints()
 	self:EnableMouse(true)
-	self:SetScript("OnEnter", function()
+	local function OnEnter(frame)
 		BattlefieldMinimap:SetScale(SCALE)
 		sizePOIs()
-	end)
+		if frame ~= self then BattlefieldMinimapUnit_OnEnter(frame) end
+	end
+	self:SetScript("OnEnter", OnEnter)
+	for i=1,4 do _G["BattlefieldMinimapParty"..i]:SetScript("OnEnter", OnEnter) end
+	for i=1,40 do _G["BattlefieldMinimapRaid"..i]:SetScript("OnEnter", OnEnter) end
 	self:SetScript("OnLeave", function()
 		BattlefieldMinimap:SetScale(1)
 		sizePOIs()

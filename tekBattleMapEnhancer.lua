@@ -19,14 +19,16 @@ f:SetScript("OnEvent", function(self, event, addon)
 	end
 
 
+	local function sizePOI(poi, size)
+		poi:SetWidth(size)
+		poi:SetHeight(size)
+	end
 	local function sizePOIs()
 		local iconSize = DEFAULT_POI_ICON_SIZE * GetBattlefieldMapIconScale()
 		if BattlefieldMinimap:GetScale() == SCALE then iconSize = iconSize/SCALE*POISCALE end
-		for i=1,NUM_BATTLEFIELDMAP_POIS do
-			local poi = _G["BattlefieldMinimapPOI"..i]
-			poi:SetWidth(iconSize)
-			poi:SetHeight(iconSize)
-		end
+		for i=1,NUM_BATTLEFIELDMAP_POIS do sizePOI(_G["BattlefieldMinimapPOI"..i], iconSize) end
+		for i=1,4 do sizePOI(_G["BattlefieldMinimapParty"..i], iconSize) end
+		for i=1,40 do sizePOI(_G["BattlefieldMinimapRaid"..i], iconSize) end
 	end
 
 
